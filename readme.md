@@ -4,25 +4,25 @@
 
 ## Install
 
-```
+```bash
 $ npm install imagemin-mozjpeg
 ```
 
 ## Usage
 
-```js
+```javascript
 import imagemin from 'imagemin';
 import imageminMozjpeg from 'imagemin-mozjpeg';
 
 (async () => {
-	await imagemin(['images/*.jpg'], {
-		destination: 'build/images',
-		plugins: [
-			imageminMozjpeg()
-		]
-	});
+    await imagemin(['images/*.jpg'], {
+        destination: 'build/images',
+        plugins: [
+            imageminMozjpeg()
+        ]
+    });
 
-	console.log('Images optimized');
+    console.log('Images optimized');
 })();
 ```
 
@@ -34,139 +34,118 @@ Returns a `Promise<Buffer>`.
 
 #### options
 
-Type: `object`
+- **Type:** `object`
 
 ##### quality
 
-Type: `number`
-
-Compression quality, in range `0` (worst) to `100` (perfect).
+- **Type:** `number`
+- **Description:** Compression quality, in range `0` (worst) to `100` (perfect).
 
 ##### progressive
 
-Type: `boolean`\
-Default: `true`
-
-`false` creates baseline JPEG file.
+- **Type:** `boolean`
+- **Default:** `true`
+- **Description:** `false` creates baseline JPEG file.
 
 ##### targa
 
-Type: `boolean`\
-Default: `false`
-
-Input file is Targa format (usually not needed).
+- **Type:** `boolean`
+- **Default:** `false`
+- **Description:** Input file is Targa format (usually not needed).
 
 ##### revert
 
-Type: `boolean`\
-Default: `false`
-
-Revert to standard defaults instead of mozjpeg defaults.
+- **Type:** `boolean`
+- **Default:** `false`
+- **Description:** Revert to standard defaults instead of mozjpeg defaults.
 
 ##### fastCrush
 
-Type: `boolean`\
-Default: `false`
-
-Disable progressive scan optimization.
+- **Type:** `boolean`
+- **Default:** `false`
+- **Description:** Disable progressive scan optimization.
 
 ##### dcScanOpt
 
-Type: `number`\
-Default: `1`
-
-Set DC scan optimization mode.
-
-- `0` One scan for all components
-- `1` One scan per component
-- `2` Optimize between one scan for all components and one scan for 1st component plus one scan for remaining components
+- **Type:** `number`
+- **Default:** `1`
+- **Description:** Set DC scan optimization mode.
+  - `0`: One scan for all components
+  - `1`: One scan per component
+  - `2`: Optimize between one scan for all components and one scan for 1st component plus one scan for remaining components
 
 ##### trellis
 
-Type: `boolean`\
-Default: `true`
-
-[Trellis optimization](https://en.wikipedia.org/wiki/Trellis_quantization).
+- **Type:** `boolean`
+- **Default:** `true`
+- **Description:** [Trellis optimization](https://en.wikipedia.org/wiki/Trellis_quantization).
 
 ##### trellisDC
 
-Type: `boolean`\
-Default: `true`
-
-Trellis optimization of DC coefficients.
+- **Type:** `boolean`
+- **Default:** `true`
+- **Description:** Trellis optimization of DC coefficients.
 
 ##### tune
 
-Type: `string`\
-Default: `hvs-psnr`
-
-Set Trellis optimization method. Available methods: `psnr`, `hvs-psnr`, `ssim`, `ms-ssim`
+- **Type:** `string`
+- **Default:** `hvs-psnr`
+- **Description:** Set Trellis optimization method. Available methods: `psnr`, `hvs-psnr`, `ssim`, `ms-ssim`.
 
 ##### overshoot
 
-Type: `boolean`\
-Default: `true`
-
-Black-on-white deringing via overshoot.
+- **Type:** `boolean`
+- **Default:** `true`
+- **Description:** Black-on-white deringing via overshoot.
 
 ##### arithmetic
 
-Type: `boolean`\
-Default: `false`
-
-Use [arithmetic coding](https://en.wikipedia.org/wiki/Arithmetic_coding).
+- **Type:** `boolean`
+- **Default:** `false`
+- **Description:** Use [arithmetic coding](https://en.wikipedia.org/wiki/Arithmetic_coding).
 
 ##### dct
 
-Type: `string`\
-Default: `int`
-
-Set [DCT](https://en.wikipedia.org/wiki/Discrete_cosine_transform) method:
-
-- `int` Use integer DCT
-- `fast` Use fast integer DCT (less accurate)
-- `float` Use floating-point DCT
+- **Type:** `string`
+- **Default:** `int`
+- **Description:** Set [DCT](https://en.wikipedia.org/wiki/Discrete_cosine_transform) method:
+  - `int`: Use integer DCT
+  - `fast`: Use fast integer DCT (less accurate)
+  - `float`: Use floating-point DCT
 
 ##### quantBaseline
 
-Type: `boolean`\
-Default: `false`
-
-Use 8-bit quantization table entries for baseline JPEG compatibility.
+- **Type:** `boolean`
+- **Default:** `false`
+- **Description:** Use 8-bit quantization table entries for baseline JPEG compatibility.
 
 ##### quantTable
 
-Type: `number`
-
-Use predefined quantization table.
-
-- `0` JPEG Annex K
-- `1` Flat
-- `2` Custom, tuned for MS-SSIM
-- `3` ImageMagick table by N. Robidoux
-- `4` Custom, tuned for PSNR-HVS
-- `5` Table from paper by Klein, Silverstein and Carney
+- **Type:** `number`
+- **Description:** Use predefined quantization table.
+  - `0`: JPEG Annex K
+  - `1`: Flat
+  - `2`: Custom, tuned for MS-SSIM
+  - `3`: ImageMagick table by N. Robidoux
+  - `4`: Custom, tuned for PSNR-HVS
+  - `5`: Table from paper by Klein, Silverstein, and Carney
 
 ##### smooth
 
-Type: `number`
-
-Set the strength of smooth dithered input. (1...100)
+- **Type:** `number`
+- **Description:** Set the strength of smooth dithered input. (1...100)
 
 ##### maxMemory
 
-Type: `number`
-
-Set the maximum memory to use in kilobytes.
+- **Type:** `number`
+- **Description:** Set the maximum memory to use in kilobytes.
 
 ##### sample
 
-Type: `string[]`
-
-Set component sampling factors. Each item should be in the format `HxV`, for example `2x1`.
+- **Type:** `string[]`
+- **Description:** Set component sampling factors. Each item should be in the format `HxV`, for example `2x1`.
 
 #### buffer
 
-Type: `buffer`
-
-Buffer to optimize.
+- **Type:** `buffer`
+- **Description:** Buffer to optimize.
