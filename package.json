@@ -50,6 +50,6 @@
   "devDependencies": {
     "ava": "^3.15.0",
     "is-progressive": "^5.0.1",
-    "xo": "^0.47.0"
+    "xo": "^0.59.3"
   }
 }
